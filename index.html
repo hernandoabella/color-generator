@@ -1,25 +1,23 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Hex Color Code</title>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
-    <!-- Stylesheet -->
+    <title>Simple Color Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
-        <div id="output-color">
-            <span></span>
-        </div>
-        <input type="text" id="output" readonly>
-        <div class="btns">
-            <button id="gen-btn">Generate</button>
+        <div id="color-box" class="color-box"></div>
+        <div class="color-info">
+            <div id="color-code" class="color-code">#000000</div>
             <button id="copy-btn">Copy</button>
         </div>
+        <button id="generate-btn">Generate Color</button>
     </div>
-    <div class="custom-alert">Hex Code Copied</div>
-    <!-- Script -->
     <script src="script.js"></script>
 </body>
+
 </html>
