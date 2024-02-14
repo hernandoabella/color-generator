@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function copyColorCode() {
+        console.log('Color code copied!');
         const copyText = document.createElement('textarea');
         copyText.value = colorCode.textContent;
         document.body.appendChild(copyText);
@@ -34,6 +35,5 @@ document.addEventListener('DOMContentLoaded', function () {
         copyText.setSelectionRange(0, 99999);
         document.execCommand('copy');
         document.body.removeChild(copyText);
-        console.log('Color code copied!');
     }
 });
