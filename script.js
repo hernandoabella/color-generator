@@ -1,31 +1,39 @@
-let outputColor = document.querySelector("#output-color span");
-let output = document.getElementById("output");
-let genBtn = document.getElementById("gen-btn");
-let copyBtn = document.getElementById("copy-btn");
-let customAlert = document.querySelector(".custom-alert");
-let hexString = "0123456789abcdef";
+document.addEventListener('DOMContentLoaded', function () {
+    const colorBox = document.getElementById('color-box');
+    const colorCode = document.getElementById('color-code');
+    const generateBtn = document.getElementById('generate-btn');
+    const copyBtn = document.getElementById('copy-btn');
 
-let genHexCode = () => {
-    let hexCode = "#";
-    for( i = 0; i < 6; i++){
-        hexCode += hexString[Math.floor(Math.random() * hexString.length)];
+    generateBtn.addEventListener('click', generateRandomColor);
+    copyBtn.addEventListener('click', copyColorCode);
+
+    function generateRandomColor() {
+        const randomColor = getRandomColor();
+        updateColor(randomColor);
     }
-    output.value = hexCode;
-    outputColor.classList.remove("show-color");
-    setTimeout( () => {
-        outputColor.classList.add("show-color");
-    },10);
-    outputColor.style.backgroundColor = hexCode;
-}
 
-copyBtn.addEventListener("click", () => {
-    output.select();
-    document.execCommand("copy");
-    customAlert.style.transform = "translateX(0)";
-    setTimeout( () => {
-        customAlert.style.transform = "translateX( calc( 100% + 10px ))";
-    }, 2000);
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function updateColor(color) {
+        colorBox.style.backgroundColor = color;
+        colorCode.textContent = color;
+    }
+
+    function copyColorCode() {
+        const copyText = document.createElement('textarea');
+        copyText.value = colorCode.textContent;
+        document.body.appendChild(copyText);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+        document.body.removeChild(copyText);
+        console.log('Color code copied!');
+    }
 });
-
-window.onload = genHexCode;
-genBtn.addEventListener("click", genHexCode);
