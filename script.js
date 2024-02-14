@@ -34,16 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         copyText.setSelectionRange(0, 99999);
         document.execCommand('copy');
         document.body.removeChild(copyText);
-        showAlert('Color code copied!');
-    }
-
-    function showAlert(message) {
-        const alert = document.createElement('div');
-        alert.classList.add('alert');
-        alert.textContent = message;
-        document.body.appendChild(alert);
-        setTimeout(() => {
-            alert.remove();
-        }, 2000);
+        colorCode.textContent = "Copied!";
     }
 });
