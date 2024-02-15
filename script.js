@@ -35,5 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.execCommand('copy');
         document.body.removeChild(copyText);
         colorCode.textContent = "Copied!";
+        setTimeout(() => {
+            colorCode.textContent = copyText.value;
+        }, 2000);
     }
 });
